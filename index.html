@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sitemap Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=REM:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="rem-font">
+  <section>
+    <div class="wrapper">
+        <div class="desktop">
+            <h1>Generate Your Sitemap Instantly With
+                <br>
+                <span>INSTANTMAP</span> Right Now!
+            </h1>
+            <p>
+                Your seo addon or whatever you use is not working ? Use Instantmap to create an SEO-friendly XML sitemap in seconds. Improve your website’s indexing and help search engines crawl your pages efficiently with our fast and easy sitemap generator
+            </p>
+        </div>
+        <div class="mobile">
+            <h1>Generate Your Sitemap Instantly With
+                <br>
+                <span>INSTANTMAP</span><br>Right Now!
+            </h1>
+            <p>
+                Your seo addon or whatever you use is not working ? Use Instantmap to create an SEO-friendly XML sitemap in seconds. Improve your website’s indexing and help search engines crawl your pages efficiently with our fast and easy sitemap generator
+            </p>
+        </div>
+  <form id="sitemapForm">
+    <input type="url" id="websiteUrl" name="websiteUrl" placeholder="Enter Website URL:" required>
+    <button type="submit">Generate Sitemap</button>
+  </form>
+  <div id="result"></div>
+    </div>
+  </section>
+
+
+  <footer>
+    <script>
+        document.getElementById('sitemapForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const websiteUrl = document.getElementById('websiteUrl').value;
+    
+          const response = await fetch('generate-sitemap.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url: websiteUrl })
+          });
+    
+          const result = await response.json();
+    
+          // Display the result
+          const resultDiv = document.getElementById('result');
+          //resultDiv.innerText = JSON.stringify(result, null, 2);
+    
+          // Add a download button if sitemap is generated successfully
+          if (result.sitemap) {
+            const downloadButton = document.createElement('button');
+            downloadButton.innerText = 'Download Sitemap';
+            downloadButton.addEventListener('click', () => {
+              const blob = new Blob([result.sitemap], { type: 'application/xml' });
+              const link = document.createElement('a');
+              link.href = URL.createObjectURL(blob);
+              link.download = 'sitemap.xml';
+              link.click();
+            });
+            resultDiv.appendChild(downloadButton);
+          }
+        });
+      </script>
+      <div class="copy-right">
+        <p>Developed by Matin Sabernezhad</p> - <a href="https://sabernezhad.site/">My Resume</a>
+      </div>
+  </footer>
+</body>
+</html>

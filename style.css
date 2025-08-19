@@ -1,0 +1,146 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background: #0e0c15;
+    color: #bcc3d7;
+    background-image: url(img/main-back-min.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    height: 100vh;
+}
+section{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 75%;
+}
+.rem-font {
+    font-family: "REM", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }  
+  
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}
+h1 span {
+    font-size: 2rem;
+    font-weight: bold;
+    background-image: linear-gradient(45deg, #ff6b6b, #6b6bff, #36d1dc, #5b86e5);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 3s infinite linear;
+}
+
+p{
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+form{
+    padding: 24px;
+    background: #21242d;
+    border-radius: 12px;
+    max-width: 640px;
+    text-align: center;
+    position: relative;
+    margin: 0 auto;
+}
+#websiteUrl{
+    min-height: 45px;
+    background: #16181e;
+    border: 2px solid transparent;
+    color: #bcc3d7;
+    border-radius: 12px;
+    width: 20rem;
+    padding-left: 10px;
+}
+button{
+    position: absolute;
+    background: linear-gradient(to right, #805af5, #cd99ff);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    width: fit-content;
+    white-space: nowrap;
+    padding: 0.7rem;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    font-weight: 600;
+    cursor: pointer;
+}
+#result button{
+    background: none;
+}
+.mobile{
+    display: none;
+}
+.copy-right {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+        gap: 1rem;
+        padding: 1rem;
+}
+.copy-right p{
+    margin: 0;
+}
+.copy-right a{
+    color: #805af5;
+    text-decoration: none;
+}
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@media(max-width:767px){
+    #websiteUrl{
+        width: 100%;
+    }
+    .wrapper{
+        width: 90%;
+    }
+    .mobile{
+        display: initial;
+    }
+    .desktop{
+        display: none;
+    }
+    h1{
+        font-size: 16px;
+    }
+    p{
+        font-size: 14px;
+        text-align: justify;
+    }
+    button {
+        position: relative;
+        transform: none;
+        top: auto;
+        right: auto;
+        margin-top: 1rem;
+        width: 100%;
+    }
+    .copy-right{
+        position: initial;
+        text-align: center;
+        justify-content: center;
+    }
+}
